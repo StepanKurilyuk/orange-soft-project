@@ -1,0 +1,62 @@
+.news-card-wrapper {
+    display: flex;
+    width: 60%;
+    height: 9rem;
+    margin: 1.5rem auto;
+    /* border: 1px black solid; */
+    background-color: rgb(216, 209, 200);
+    opacity: 1;
+    border-radius: 25px;
+    box-shadow: 3px 3px 5px 6px rgb(80, 78, 78);
+}
+
+.news-card-image {
+    height: 100%;
+    width: 25%;
+    border-radius: 25px;
+}
+
+.news-card-text-section {
+    width: 75%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.news-card-title {
+    margin-top: 0;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.news-card-title-text {
+    float: left ;
+    padding-left: 1rem;
+}
+
+.news-card-description {
+    height: 50%;
+    text-align: start;
+    margin: 0 1rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    overflow: hidden; /* Обрезаем все, что не помещается в область */
+    text-overflow: ellipsis; /* Добавляем многоточие */
+}
+
+.news-card-read-more {
+    height: 1.5rem;
+    cursor: pointer;
+    transition: all 0.5s;
+    width: 6rem;
+    align-self: flex-end;
+    margin-right: 1rem;
+}
+
+.news-card-read-more:hover {
+    transition: all 0.5s;
+    color: rgb(105, 96, 96);
+}

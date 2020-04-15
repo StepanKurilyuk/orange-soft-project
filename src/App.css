@@ -1,0 +1,29 @@
+body {
+    margin:0;
+    background:#dbad1648;
+    user-select: none;
+    cursor: default;
+}
+
+.wrapper {
+    text-align: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.background {
+    background: gray url(images/background.png) repeat 0 0;
+    opacity: 90%;
+    justify-content: center;
+    animation: animatedBackground 150s infinite alternate;
+}
+
+
+@keyframes animatedBackground {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 0;
+    }
+}

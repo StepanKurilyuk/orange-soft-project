@@ -1,0 +1,101 @@
+body {
+    margin:0;
+}
+
+.nav-ul {
+    margin: 0;
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    top: 0;
+    height: 3rem;
+    width: 100%;
+    border-bottom: black 1px solid;
+    display: inline-flex;
+}
+
+.nav-li {
+    height: 100%;
+    float: left;
+    cursor: default;
+    user-select: none;
+}
+
+.nav-li .nav-a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.active {
+    color: orange !important;
+}
+
+.nav-a {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    cursor: default;
+
+}
+
+.nav-a:before {
+    display: block;
+    position: absolute;
+    content: "";
+    height: 2px;
+    width: 0;
+    background: orange;
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+    left: 50%;
+    bottom: 0;
+}
+
+.nav-a:after {
+    display: block;
+    position: absolute;
+    content: "";
+    height: 2px;
+    width: 0;
+    background: orange;
+    transition: width 0.3s ease-in-out;
+    left: 50%;
+    bottom: 0;
+}
+
+.nav-a:hover:before {
+    width: 50%;
+    left: 0;
+}
+
+.nav-a:hover:after {
+    width: 50%;
+}
+
+.nav-a:hover {
+    color: #fff7c3;
+}
+
+.leftBlock {
+    width: 75%;
+    height: 100%;
+}
+
+.rightBlock {
+    width: 25%;
+    height: 100%;
+}
+
+.avatar {
+    vertical-align: top;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    margin-right: .3rem;
+    bottom: 0.4rem;
+    left: -0.2rem;
+    position: inherit;
+}
