@@ -4,14 +4,14 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import {Provider} from 'react-redux';
-import {createStore} from 'redux';
-import {rootReducer} from './Redux/rootReducer';
+import { Provider } from 'react-redux';
+import { store } from './Redux/store';
+import { configureFakeBackend } from './FakeBackEnd/FakeBackEnd';
 
-const store = createStore(rootReducer);
+configureFakeBackend();
 
 const app = (
-    <Provider store={store}>
+    <Provider store={store} dispatch={store.dispatch.bind(store)} >
         <App/>
     </Provider>
 )
