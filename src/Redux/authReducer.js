@@ -1,46 +1,43 @@
-const SET_USER_DATA = 'SET_USER_DATA';
+import { userConstants } from '../constants/userConstants';
+import { toastConstants } from '../constants/toastConstants';
+import { toast } from 'react-toastify';
 
-let initialState = {
-    userId: null,
-    email: null,
-    login: null,
-    isAuth: false,
-};
+let user = JSON.parse(localStorage.getItem('user'));
 
-const authReducer = (state = initialState, action) => {
+const initialState = user ? { loggedIn: true, user } : {};
+
+export function authentication(state = initialState, action) {
     switch (action.type) {
-        case SET_USER_DATA:
+        case userConstants.LOGIN_REQUEST:
             return {
-                ...state,
-                ...action.data,
-                isAuth: true
+                isUserLogged: true,
+                user: action.user
             };
-        
+        case userConstants.LOGIN_SUCCESS:
+            toast.success(toastConstants.SUCCESS_LOGIN_TEXT, {
+                position: toast.POSITION.TOP_RIGHT
+            });
+
+            return {  
+                loggedIn: true,
+                user: action.user
+            };
+        case userConstants.LOGIN_FAILURE:
+
+            toast.error(action.error, {
+                position: toast.POSITION.TOP_RIGHT
+            });
+
+            return {};
+        case userConstants.LOGOUT:
+            toast.success(toastConstants.SUCCESS_LOGOUT_TEXT, {
+                position: toast.POSITION.TOP_RIGHT
+            });
+
+            return {
+                isUserLogged : false
+            };
         default:
             return state;
     }
 }
-
-export const setAuthUserData = (userId, email, login) => ({type: SET_USER_DATA, data: {userId, email, login}});
-export const getAuthUserData = () => (dispatch) => {
-    authApi.me()
-        .then(response => {
-            if (response.data.resultCode === 0) {
-                let (id, login, email) = response.data.data;
-                dispatch(setAuthUserData(id, email, login));
-            }
-        })
-}
-
-export const login = (email, password) => (dispatch) => {
-    authApi.me()
-        .then(response => {
-            if (response.data.resultCode === 0) {
-                let (id, login, email) = response.data.data;
-                dispatch(setAuthUserData(id, email, login));
-            }
-        })
-}
-
-
-export default authReducer;
