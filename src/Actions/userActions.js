@@ -34,7 +34,6 @@ function logout() {
         history.push('/');
 
         dispatch(request());
-
     }
 
     function request() { return { type: userConstants.LOGOUT } }
