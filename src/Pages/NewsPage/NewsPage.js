@@ -1,12 +1,12 @@
 import React from 'react';
 import { NavigationBar } from '../../Components/NavigationBar/NavigationBar';
 import NewsCardElement from './NewsCard/NewsCardElement';
-import './NewsPage.css';
+import styles from './NewsPage.css';
 import { connect } from 'react-redux';
 import { newsActions } from '../../Actions/newsActions';
+import HotNewsSection from './HotNewsSection/HotNewsSection';
 
 class NewsPage extends React.Component {
-
     constructor(props) {
         super(props);
 
@@ -16,20 +16,11 @@ class NewsPage extends React.Component {
             totalNewsCount: 1,
             currentPage: 1,
         }
-
-        this.handleClick = this.handleClick.bind(this);
     }
 
-    componentDidMount() {
-        // this.props.getAllNews()
-        // this.state = this.props.getAllNews();
-    }
-
-    handleClick() {
-        let news = this.props.getAllNews();
-
-        console.log(this.props)
-        console.log(this.state)
+    componentWillMount() {
+        const { getAllNews } = this.props;
+        getAllNews();
     }
 
     render() {
@@ -45,9 +36,11 @@ class NewsPage extends React.Component {
 
         return (
             <>
+                {console.log(this.props)}
                 <NavigationBar selectedTabName='News'/>
+                <HotNewsSection/>
 
-                <div className='news-page-wrapper' id='news-form'>
+                <div className={styles['news-page-wrapper']} id='news-form'>
                     <button onClick={this.handleClick}>TEST</button>
                     {/* {data.newsData.map(element =>
                         <NewsCardElement element={element}/>        

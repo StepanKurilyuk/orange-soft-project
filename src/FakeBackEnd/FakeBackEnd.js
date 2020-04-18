@@ -53,10 +53,17 @@ export function configureFakeBackend() {
                         description: 'News Description'
                     }
 
+                    const hotNewsItem = {
+                        title: 'Hot News Title',
+                        image: 'img'
+                    }
+
                     const newsData = Array.from({ length: 1000 }, () => newsItem);
+                    const hotNewsData = Array.from({ length: 9 }, () => hotNewsItem);
 
                     let responseJson = {
-                        newsData: newsData
+                        hotNews: hotNewsData,
+                        news: newsData
                     };
 
                     resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(responseJson)) });
