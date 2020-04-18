@@ -24,10 +24,10 @@ class NewsPage extends React.Component {
     }
 
     render() {
-        console.log(this.state.allNews)
-        let pagesCount = this.props.totalNewsCount / this.props.pageSize;
+        const { allNews, totalNewsCount, pageSize } = this.props;
 
-        console.log(this.props)
+        let pagesCount = totalNewsCount / pageSize;
+
         let pages = [];
 
         for (let i = 1; i < pagesCount; i++) {
@@ -36,7 +36,6 @@ class NewsPage extends React.Component {
 
         return (
             <>
-                {console.log(this.props)}
                 <NavigationBar selectedTabName='News'/>
                 <HotNewsSection/>
 
