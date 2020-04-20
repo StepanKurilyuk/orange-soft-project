@@ -1,0 +1,116 @@
+.post-wrapper {
+    height: 100%;
+    width: 100vw;
+    margin: 0.15rem .5rem;
+    display: flex;
+    margin: .5rem auto;
+    padding: 0 .5rem;
+}
+
+.post-container {
+    display: flex;
+    margin: 0 auto;
+}
+
+.post-wrapper {
+    overflow: hidden;
+    flex: 1;
+}
+.post-wrapper {
+    height: auto;
+    transform: scale(1);
+    transition: all 1s ease-in-out 0s;
+}
+
+img {
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.post-wrapper .post-content{
+    background: #fff;
+    padding: 10px;
+}
+
+.post-wrapper .post-title{
+    font-size: 17px;
+    font-weight: 600;
+    margin-top: 0;
+    text-transform: capitalize;
+}
+
+.post-wrapper .post-title a{
+    display: inline-block;
+    color: #808080;
+    transition: all 0.3s ease 0s;
+}
+.post-wrapper .post-title a:hover{
+    color: #3d3030;
+    text-decoration: none;
+}
+.post-wrapper .post-description{
+    height: 40px;
+    font-size: 13px;
+    color: #676767;
+    margin-bottom: 14px;
+    overflow-y: hidden;
+    position: relative;
+    line-height: 20px;
+        text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.post-wrapper .post-bar{
+    padding: 0;
+    margin-bottom: 15px;
+    list-style: none;
+}
+.post-wrapper .post-bar li{
+    color: #676767;
+    padding: 2px 0;
+}
+.post-sliwrapperde .post-bar li i{
+    margin-right: 5px;
+}
+.post-wrapper .post-bar li a{
+    display: inline-block;
+    font-size: 12px;
+    color: #808080;
+    transition: all 0.3s ease 0s;
+}
+.post-wrapper .post-bar li a:after{
+    content: ",";
+}
+.post-wrapper .post-bar li a:last-child:after{
+    content: "";
+}
+.post-wrapper .post-bar li a:hover{
+    color: #3d3030;
+    text-decoration: none;
+}
+.post-wrapper .read-more{
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background: #e7989a;
+    border-bottom-right-radius: 10px;
+    text-transform: capitalize;
+    transition: all 0.30s linear;
+}
+.post-wrapper .read-more:hover{
+    background: #333;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 450px) {
+    .post-container {
+        flex-direction: column;
+    }
+
+    .post-img {
+        display: none;
+    }
+}
