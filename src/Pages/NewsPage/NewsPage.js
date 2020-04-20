@@ -3,7 +3,7 @@ import { NavigationBar } from '../../Components/NavigationBar/NavigationBar';
 import NewsCardElement from './NewsCard/NewsCardElement';
 import styles from './NewsPage.css';
 import { connect } from 'react-redux';
-import { newsActions } from '../../Actions/newsActions';
+import { newsActions } from '../../actions/newsActions';
 import HotNewsSection from './HotNewsSection/HotNewsSection';
 
 class NewsPage extends React.Component {
@@ -11,11 +11,15 @@ class NewsPage extends React.Component {
         super(props);
 
         this.state = {
-            news: [],
-            pageSize: 1,
-            totalNewsCount: 1,
+            totalNewsCount: 0,
+            pageSize: 10,
+            pages: 0,
+            allNews: [],
+            hotNews: [],
             currentPage: 1,
+            isDataLoaded: false
         }
+
     }
 
     componentWillMount() {
@@ -24,32 +28,24 @@ class NewsPage extends React.Component {
     }
 
     render() {
-        const { allNews, totalNewsCount, pageSize } = this.props;
-
-        let pagesCount = totalNewsCount / pageSize;
-
-        let pages = [];
-
-        for (let i = 1; i < pagesCount; i++) {
-            pages.push(i);
-        }
+        const { allNews, hotNews, pages, totalNewsCount, pageSize, isDataLoaded } = this.props;
+        const { currentPage } = this.state;
 
         return (
             <>
                 <NavigationBar selectedTabName='News'/>
-                <HotNewsSection/>
+                {isDataLoaded && <HotNewsSection news={hotNews}/>}   
 
                 <div className={styles['news-page-wrapper']} id='news-form'>
-                    <button onClick={this.handleClick}>TEST</button>
-                    {/* {data.newsData.map(element =>
-                        <NewsCardElement element={element}/>        
-                    )} */}
+                    {(isDataLoaded && allNews && allNews.map(element =>
+                        <NewsCardElement element={element}/>
+                    ))}
                 </div>
 
                 <div>
-                    {pages.map(pageNumber => {
+                    {pages && pages.map(pageNumber => {
                         return (
-                            <span className={this.props.currentPage && ''}>
+                            <span className={currentPage === pageNumber && ''}>
                                 {pageNumber}
                             </span>
                         )
@@ -60,14 +56,14 @@ class NewsPage extends React.Component {
     }
 }
 
-function mapStateToProps (state) {
-    const { news, pageSize, totalNewsCount, currentPage } = state.newsActions;
-    return { news, pageSize, totalNewsCount, currentPage };
+function mapStateToProps(state) {
+    const { news, pageSize, totalNewsCount, currentPage, hotNews, isDataLoaded } = state.newsActions;
+    return { news, pageSize, totalNewsCount, currentPage, hotNews, isDataLoaded };
 }
 
 const actionCreators = {
     getAllNews: newsActions.getAllNews,
 };
 
-const connectedNewsPage = connect(mapStateToProps , actionCreators)(NewsPage);
+const connectedNewsPage = connect(mapStateToProps, actionCreators)(NewsPage);
 export { connectedNewsPage as NewsPage };
