@@ -3,6 +3,7 @@ body {
     background:#dbad1648;
     user-select: none;
     cursor: default;
+    overflow: hidden;
 }
 
 .wrapper {

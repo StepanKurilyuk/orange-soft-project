@@ -1,7 +1,7 @@
 import React from 'react';
 import './NavigationBar.css'
 import avatar from '../../images/avatar.png';
-import { userActions } from '../../Actions/userActions';
+import { userActions } from '../../actions/userActions';
 import { connect } from 'react-redux';
 
 class NavigationBar extends React.Component {
