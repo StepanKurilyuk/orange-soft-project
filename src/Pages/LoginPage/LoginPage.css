@@ -1,6 +1,6 @@
 .login-background {
     margin: 5rem auto;
-    width: 400px;
+    width: 500px;
     height: 400px;
     border-radius: 1rem;
     opacity: 0;
@@ -90,7 +90,7 @@
 .icon {
     position: absolute;
     top: 24%;
-    left: 8%;
+    left: 16%;
     width: 24px;
     height: 24px;
     filter: invert(100%);
@@ -140,5 +140,21 @@
     }
     100% {
         opacity: 1;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .login-background {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+    }
+
+    .icon {
+        left: 8%
+    }
+
+    .post-img {
+        display: none;
     }
 }

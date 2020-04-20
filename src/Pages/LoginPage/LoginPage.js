@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationBar } from '../../Components/NavigationBar/NavigationBar';
 import './LoginPage.css';
 import { connect } from 'react-redux';
-import { userActions } from '../../Actions/userActions'
+import { userActions } from '../../actions/userActions'
 
 import passIcon from '../../images/pass-icon.png';
 import userIcon from '../../images/user-icon.svg';
@@ -39,7 +39,6 @@ class LoginPage extends React.Component {
         const { userEmail, password } = this.state;
 
         if (userEmail && password) {
-            console.log(this.props)
             this.props.login(userEmail, password);
         }
     }
@@ -47,7 +46,7 @@ class LoginPage extends React.Component {
     handleKeyDown(event) {
         if (event.key === 'Enter') {
             this.handleSubmit(event);
-          }
+        }
     }
 
     render() {
