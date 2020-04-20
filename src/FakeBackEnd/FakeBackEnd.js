@@ -47,19 +47,23 @@ export function configureFakeBackend() {
 
                 // getting all news from fake back-end
                 if (url.endsWith('/news') && opts.method === 'GET') {
-                    const newsItem = {
-                        title: 'News Title',
-                        image: 'img',
-                        description: 'News Description'
-                    }
+                    const newsData = Array.from({ length: 1000 }, (element, index) => {
+                        return {
+                            title: 'News Title',
+                            image: 'https://dev.by/storage/images/76/24/65/32/derived/df2bcdf6fab4e517a2c6ba544d00a1ea.jpg',
+                            description: 'How do you auto-resize a large image so that it will fit into a smaller width div container whilst maintaining its width:height ratio?',
+                            index: index
+                        }
+                    });
 
-                    const hotNewsItem = {
-                        title: 'Hot News Title',
-                        image: 'img'
-                    }
-
-                    const newsData = Array.from({ length: 1000 }, () => newsItem);
-                    const hotNewsData = Array.from({ length: 9 }, () => hotNewsItem);
+                    const hotNewsData = Array.from({ length: 9 }, (element, index) => {
+                        return {
+                            title: 'Hot News Title',
+                            image: 'https://dev.by/storage/images/76/24/65/32/derived/df2bcdf6fab4e517a2c6ba544d00a1ea.jpg',
+                            description: 'How do you auto-resize a large image so that it will fit into a smaller width div container whilst maintaining its width:height ratio?How do you auto-resize a large image so that it will fit into a smaller width div container whilst maintaining its width:height ratio?How do you auto-resize a large image so that it will fit into a smaller width div container whilst maintaining its width:height ratio?',
+                            index: index,
+                        }
+                    });
 
                     let responseJson = {
                         hotNews: hotNewsData,
