@@ -47,6 +47,7 @@
     display: -webkit-box;
     -webkit-line-clamp: 10;
     -webkit-box-orient: vertical;
+    line-height: 18px;
 }
 
 .news-card-text-title {
@@ -76,5 +77,6 @@
 
     .news-card-text-description {
         height: 34%;
+        -webkit-line-clamp: 3;
     }
 }
