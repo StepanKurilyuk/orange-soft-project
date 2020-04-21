@@ -1,0 +1,21 @@
+.pagination {
+    display: flex;
+}
+
+.pagination-button {
+    width: 100%;
+    height: 50px;
+    font-family: 'Open Sans', sans-serif;
+    transition: all 0.2s ease-in-out;
+    font-size: 17px;
+    text-transform: uppercase;
+    color: black;
+    letter-spacing: 2px; 
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+}
+
+.active-pagination-button {
+    color: white;
+}

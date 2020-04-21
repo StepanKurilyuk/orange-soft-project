@@ -1,10 +1,11 @@
 import React from 'react';
-import { NavigationBar } from '../../Components/NavigationBar/NavigationBar';
+import { NavigationBar } from '../../components/NavigationBar/NavigationBar';
 import NewsCardElement from './NewsCard/NewsCardElement';
-import styles from './NewsPage.css';
+import './NewsPage.css';
 import { connect } from 'react-redux';
 import { newsActions } from '../../actions/newsActions';
 import HotNewsSection from './HotNewsSection/HotNewsSection';
+import NewsPagePagination from './NewsPagePagination/NewsPagePagination';
 
 class NewsPage extends React.Component {
     constructor(props) {
@@ -13,56 +14,69 @@ class NewsPage extends React.Component {
         this.state = {
             totalNewsCount: 0,
             pageSize: 10,
-            pages: 0,
+            pages: [1],
             allNews: [],
-            hotNews: [],
             currentPage: 1,
-            isDataLoaded: false
+            newsToDisplay: [],
+            isDataLoaded: false,
+            paginationSetup: {
+                pages: [],
+                newsToDisplay: [],
+                currentPage: 1
+            }
         }
 
+        this.ref = React.createRef()  
+        this.handlePaginationPageClick = this.handlePaginationPageClick.bind(this);
     }
 
-    componentWillMount() {
+    async componentDidMount() {
         const { getAllNews } = this.props;
         getAllNews();
     }
 
+    handlePaginationPageClick(pageNumber) {
+        const { setCurrentPage, pageSize, news } = this.props;
+        setCurrentPage(pageNumber, news.news, pageSize);
+        this.ref.current.scrollTo(0, 0);
+    }
+
     render() {
-        const { allNews, hotNews, pages, totalNewsCount, pageSize, isDataLoaded } = this.props;
-        const { currentPage } = this.state;
+        const { news, isDataLoaded, paginationSetup } = this.props
+        const hotNews = isDataLoaded && news.hotNews; 
+
+        const { pages, newsToDisplay, currentPage } = paginationSetup
 
         return (
             <>
                 <NavigationBar selectedTabName='News'/>
-                {isDataLoaded && <HotNewsSection news={hotNews}/>}   
 
-                <div className={styles['news-page-wrapper']} id='news-form'>
-                    {(isDataLoaded && allNews && allNews.map(element =>
-                        <NewsCardElement element={element}/>
+                <div ref={this.ref} className='news-page-wrapper '>
+                    {isDataLoaded && <HotNewsSection news={hotNews}/>}   
+                    {(isDataLoaded && newsToDisplay && newsToDisplay.map(element =>
+                        <NewsCardElement key={element.index} post={element}/>
                     ))}
                 </div>
+                
+                {isDataLoaded &&
+                    <div className='news-page-pagination'>
+                        <NewsPagePagination paginationClick={this.handlePaginationPageClick} pages={pages} currentPage={currentPage}/>
+                    </div>
+                }
 
-                <div>
-                    {pages && pages.map(pageNumber => {
-                        return (
-                            <span className={currentPage === pageNumber && ''}>
-                                {pageNumber}
-                            </span>
-                        )
-                    })}
-                </div>
             </>
         )
     }
 }
 
 function mapStateToProps(state) {
-    const { news, pageSize, totalNewsCount, currentPage, hotNews, isDataLoaded } = state.newsActions;
-    return { news, pageSize, totalNewsCount, currentPage, hotNews, isDataLoaded };
+    const { news, isDataLoaded, paginationSetup, pageSize } = state.newsActions;
+    return { news, isDataLoaded, paginationSetup, pageSize };
 }
 
 const actionCreators = {
     getAllNews: newsActions.getAllNews,
+    setCurrentPage: newsActions.setCurrentPage
 };
 
 const connectedNewsPage = connect(mapStateToProps, actionCreators)(NewsPage);
