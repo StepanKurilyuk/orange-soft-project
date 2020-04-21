@@ -1,3 +1,8 @@
+.login-page-container {
+    height: 100%;
+    overflow: overlay;
+}
+
 .login-background {
     margin: 5rem auto;
     width: 500px;
@@ -90,7 +95,7 @@
 .icon {
     position: absolute;
     top: 24%;
-    left: 16%;
+    left: 27%;
     width: 24px;
     height: 24px;
     filter: invert(100%);
@@ -151,7 +156,7 @@
     }
 
     .icon {
-        left: 8%
+        left: 20%
     }
 
     .post-img {

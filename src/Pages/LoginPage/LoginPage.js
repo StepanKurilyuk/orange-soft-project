@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavigationBar } from '../../Components/NavigationBar/NavigationBar';
+import { NavigationBar } from '../../components/NavigationBar/NavigationBar';
 import './LoginPage.css';
 import { connect } from 'react-redux';
 import { userActions } from '../../actions/userActions'
@@ -43,6 +43,7 @@ class LoginPage extends React.Component {
         }
     }
 
+    // handle enter click, and trying to login 
     handleKeyDown(event) {
         if (event.key === 'Enter') {
             this.handleSubmit(event);
@@ -57,43 +58,44 @@ class LoginPage extends React.Component {
         return (
             <>
                 <NavigationBar/>
-
-                <div className='login-background'>
-                    <div className='login-form' onKeyDown={this.handleKeyDown}>
-                        <div className='login-form-title'>
-                            <span>
-                                Sign In
-                            </span>
-                        </div>
-
-                        <div className='login-form-body'>
-                            <div className='group'>
-                                    <div className='input-container'>
-                                    <img className='icon' src={userIcon} alt='User'/>
-                                    <input placeholder='User Email' value={userEmail} name='userEmail' onChange={this.handleChange} autoComplete='off' id='email' type='text' className={emailInputClass}/>
-                                </div>
-                            </div>
-
-                            <div className='group'>
-                                <div className='input-container'>
-                                    <img className='icon' src={passIcon} alt='Password'/>
-                                    <input placeholder='Password' value={password} name='password' onChange={this.handleChange} autoComplete='off' id='pass' type='password' data-type="password" className='input'/>
-                                </div>
-                            </div>
-
-                            <button type="submit" onClick={this.handleSubmit} className="button">Sign In</button>
-
-                            <span className='forgot-password'>Forgot password?</span>
-
-                            <div className='social-login'>
-                                <span className='social-login-label'>
-                                    Login with
+                <div className='login-page-container'>
+                    <div className='login-background'>
+                        <div className='login-form' onKeyDown={this.handleKeyDown}>
+                            <div className='login-form-title'>
+                                <span>
+                                    Sign In
                                 </span>
+                            </div>
 
-                                <img className='social-login-icon' src={vkLogo}       alt='vk'/>
-                                <img className='social-login-icon' src={facebookLogo} alt='facebook'/>
-                                <img className='social-login-icon' src={googleLogo}   alt='google'/>
-                                <img className='social-login-icon' src={linkedInLogo} alt='google'/>
+                            <div className='login-form-body'>
+                                <div className='group'>
+                                        <div className='input-container'>
+                                        <img className='icon' src={userIcon} alt='User'/>
+                                        <input placeholder='User Email' value={userEmail} name='userEmail' onChange={this.handleChange} autoComplete='off' id='email' type='text' className={emailInputClass}/>
+                                    </div>
+                                </div>
+
+                                <div className='group'>
+                                    <div className='input-container'>
+                                        <img className='icon' src={passIcon} alt='Password'/>
+                                        <input placeholder='Password' value={password} name='password' onChange={this.handleChange} autoComplete='off' id='pass' type='password' data-type="password" className='input'/>
+                                    </div>
+                                </div>
+
+                                <button type="submit" onClick={this.handleSubmit} className="button">Sign In</button>
+
+                                <span className='forgot-password'>Forgot password?</span>
+
+                                <div className='social-login'>
+                                    <span className='social-login-label'>
+                                        Login with
+                                    </span>
+
+                                    <img className='social-login-icon' src={vkLogo}       alt='vk'/>
+                                    <img className='social-login-icon' src={facebookLogo} alt='facebook'/>
+                                    <img className='social-login-icon' src={googleLogo}   alt='google'/>
+                                    <img className='social-login-icon' src={linkedInLogo} alt='google'/>
+                                </div>
                             </div>
                         </div>
                     </div>
