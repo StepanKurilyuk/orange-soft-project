@@ -95,7 +95,7 @@
 .icon {
     position: absolute;
     top: 24%;
-    left: 27%;
+    left: 21%;
     width: 24px;
     height: 24px;
     filter: invert(100%);
@@ -156,7 +156,7 @@
     }
 
     .icon {
-        left: 20%
+        left: 9%
     }
 
     .post-img {
