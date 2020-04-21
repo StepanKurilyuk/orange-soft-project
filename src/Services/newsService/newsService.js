@@ -1,5 +1,6 @@
 export const newsService = {
     getAllNews,
+    calculateVisibleNews
     // addNew
 }
 
@@ -29,3 +30,19 @@ function handleResponse(response) {
         return data;
     });
 }
+
+function calculateVisibleNews(pageNumber, allNews, pageSize) {
+    const newsToDisplay = allNews.slice(((pageNumber - 1) * pageSize), ((pageNumber - 1) * pageSize) + pageSize);
+    const pages = [];
+
+    for (let i = 0; i < allNews.length / pageSize; i++) {
+        pages.push(i + 1);
+    }
+    
+    return {
+        allNews: allNews,
+        pages: pages,
+        newsToDisplay: newsToDisplay,
+        currentPage: pageNumber
+    }
+};

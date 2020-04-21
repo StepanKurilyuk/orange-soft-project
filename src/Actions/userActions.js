@@ -5,6 +5,7 @@ import { history } from '../Services/reactHistory';
 export const userActions = {
     login,
     logout,
+    getUserData,
 };
 
 function login(userEmail, password) {
@@ -37,4 +38,20 @@ function logout() {
     }
 
     function request() { return { type: userConstants.LOGOUT } }
+}
+
+function getUserData() {
+    return dispatch => {
+        dispatch(request());
+
+        userService.getUserData()
+            .then(
+                userData => {
+                    dispatch(success(userData))
+                }
+            )
+    };
+
+    function request() { return { type: userConstants.REQUEST_USER_DATA } }
+    function success(userData) { return { type: userConstants.REQUEST_USER_DATA_SUCCESS, userData } }
 }

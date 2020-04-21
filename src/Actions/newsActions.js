@@ -3,6 +3,7 @@ import { newsService } from '../Services/newsService/newsService';
 
 export const newsActions = {
     getAllNews,
+    setCurrentPage
     // addNew,
 };
 
@@ -12,12 +13,23 @@ function getAllNews() {
 
         newsService.getAllNews()
             .then(
-                news => { 
-                    dispatch(success(news));
+                news => {
+                    const paginationSetup = newsService.calculateVisibleNews(1, news.news, 10);
+                    dispatch(success(news, paginationSetup))
                 },
-            );
+            )
     };
 
     function request() { return { type: newsConstants.GET_ALL_NEWS } }
-    function success(news) { return { type: newsConstants.GET_ALL_REQUEST_SUCCESS, news } }
+    function success(news, paginationSetup) { return { type: newsConstants.GET_ALL_REQUEST_SUCCESS, news, paginationSetup} }
+}
+
+function setCurrentPage(pageNumber, allNews, pageSize) {
+    const paginationSetup = newsService.calculateVisibleNews(pageNumber, allNews, pageSize);
+
+    return dispatch => {
+        dispatch(setPage(paginationSetup));
+    }
+
+    function setPage(paginationSetup) { return { type: newsConstants.SET_CURRENT_PAGE, paginationSetup } };
 }
