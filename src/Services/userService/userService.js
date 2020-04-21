@@ -1,6 +1,7 @@
 export const userService = {
     login,
     logout,
+    getUserData
 };
 
 function login(userEmail, password) {
@@ -29,6 +30,22 @@ function logout() {
     return result;
 }
 
+function getUserData() {
+    const userId = JSON.parse(localStorage.getItem('user')).id;
+
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({userId})
+    };
+
+    return fetch('http://localhost:3000/profile', requestOptions)
+        .then(handleResponse)
+        .then(userData => {
+            return userData;
+        });
+}
+
 function handleResponse(response) {
     return response.text().then(text => {
         const data = text && JSON.parse(text);
@@ -37,7 +54,6 @@ function handleResponse(response) {
             if (response.status === 401) {
                 // auto logout if 401 response returned from api
                 logout();
-                // location.reload(true);
             }
 
             const error = (data && data.message) || response.statusText;
