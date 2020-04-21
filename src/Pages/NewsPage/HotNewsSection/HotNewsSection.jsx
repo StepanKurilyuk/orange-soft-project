@@ -10,7 +10,7 @@ class HotNewsSection extends React.Component {
             post: this.props.news[0]
         }
 
-        setInterval(() => this.nextPost(), 10000)
+        // setInterval(() => this.nextPost(), 10000)
     }
 
     nextPost = () => {
