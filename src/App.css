@@ -17,7 +17,6 @@ body {
 .background {
     overflow: hidden;
     background: url(images/background.png) repeat center center; 
-    opacity: 90%;
     animation: animatedBackground 150s infinite alternate;
 }
 
