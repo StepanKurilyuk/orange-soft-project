@@ -59,7 +59,7 @@ img {
 }
 
 .post-wrapper .post-title a {
-    overflow-y: hidden;
+    overflow: hidden;
     position: relative;
     line-height: 20px;
     text-overflow: ellipsis;

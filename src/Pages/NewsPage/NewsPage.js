@@ -56,14 +56,13 @@ class NewsPage extends React.Component {
                     {(isDataLoaded && newsToDisplay && newsToDisplay.map(element =>
                         <NewsCardElement key={element.index} post={element}/>
                     ))}
+                                    
+                    {isDataLoaded &&
+                        <div className='news-page-pagination'>
+                            <NewsPagePagination paginationClick={this.handlePaginationPageClick} pages={pages} currentPage={currentPage}/>
+                        </div>
+                    }
                 </div>
-                
-                {isDataLoaded &&
-                    <div className='news-page-pagination'>
-                        <NewsPagePagination paginationClick={this.handlePaginationPageClick} pages={pages} currentPage={currentPage}/>
-                    </div>
-                }
-
             </>
         )
     }

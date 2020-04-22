@@ -58,6 +58,7 @@
 
 .profile-page-user {
     height: 30%;
+    -webkit-text-stroke: 1px white;
 }
 
 .profile-page-social-networks {

@@ -34,7 +34,7 @@ export default function HomePage() {
                         </li>
 
                         <li>
-                            Fix pagination style on mobile devices
+                            <s>Fix pagination style on mobile devices</s>
                         </li>
                     </ul>
                 </div>
