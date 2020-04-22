@@ -58,7 +58,7 @@ export function configureFakeBackend() {
                     if (isEmailValid) {
                         // find if any user matches login credentials
                         let filteredUsers = usersLoginData.filter(user => {
-                            return user.userEmail === params.userEmail && user.password === params.password;
+                            return user.userEmail === params.userEmail.toLowerCase() && user.password === params.password;
                         });
 
                         if (filteredUsers.length) {
@@ -71,6 +71,8 @@ export function configureFakeBackend() {
                             };
 
                             resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(responseJson)) });
+                        } else if (isEmailValid && params.password.length === 0) {
+                            reject('Password cannot be empty');
                         } else {
                             reject('Email or password is incorrect');
                         }

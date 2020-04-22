@@ -37,10 +37,9 @@ class LoginPage extends React.Component {
         event.preventDefault();
 
         const { userEmail, password } = this.state;
+        const { login } = this.props;
 
-        if (userEmail && password) {
-            this.props.login(userEmail, password);
-        }
+        login(userEmail, password);
     }
 
     // handle enter click, and trying to login 
