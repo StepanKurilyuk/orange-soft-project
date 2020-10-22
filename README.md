@@ -10,7 +10,7 @@
 Если введены корректные данные, то перебрасывать на страницу  /profile 
 
 Данные для входа:
-  email: test@orangesoft.co
+  email: test@orangesoft.com
   password: 123456
 
 Главная( / ):
