@@ -26,7 +26,7 @@ export default function HomePage() {
                         </li>
 
                         <li>
-                            Add Pagintation with dots for news page
+                            Add Pagination with dots for news page
                         </li>
 
                         <li>
