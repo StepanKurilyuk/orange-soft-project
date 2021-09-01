@@ -1,0 +1,12 @@
+.external-page-container {
+    display: flex;
+    flex-direction: column;
+    height: 95%;
+    overflow-y: auto;
+}
+
+@media screen and (max-width: 500px) {
+    .external-page-container h1 {
+        font-size: 1.5rem;
+    }
+}

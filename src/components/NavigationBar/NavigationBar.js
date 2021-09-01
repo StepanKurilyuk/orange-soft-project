@@ -18,6 +18,10 @@ class NavigationBar extends React.Component {
                 {
                     name: 'News',
                     href: 'news'
+                },
+                {
+                    name: 'External App',
+                    href: 'external'
                 }
             ]
         };
